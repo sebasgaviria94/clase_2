@@ -1,0 +1,11 @@
+p{
+    font-size: medium;
+    color: blue;
+}
+
+.titulo{  
+    font-size: 24px;
+    color: yellow;
+    background-color: red;
+
+}
