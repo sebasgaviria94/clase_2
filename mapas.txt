@@ -1,0 +1,63 @@
+//inicio el mapa en la coordenada xx, y con zomm 5
+var map = L.map('map').setView([6.257257, -75.575508], 5);
+
+
+
+//inicio mapa base de un proveedor (OSM)
+
+var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+});
+
+var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+});
+
+var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+});
+
+var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+}).addTo(map);
+
+
+//Información cartográfica
+var marker = L.marker([6.257257, -75.575508]).addTo(map);
+marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+var circle = L.circle([6.257257, -75.575508], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+});
+circle.bindPopup("I am a circle.");
+
+// var polygon = L.polygon([
+//     [6.274280, -75.583493],
+//     [6.263364, -75.553984],
+//     [6.249038, -75.563493]
+//     [6.261822, -75.596359],
+// ],).addTo(map);
+
+// polygon.bindPopup("I am a polygon.");
+
+//Agregar basemap
+
+var baseMaps = {
+    "OpenStreetMap": osm,
+    "OpenStreetMap.HOT": osmHOT,
+    "Esri": Esri_WorldImagery
+};
+
+var overlayMaps = {
+    "Marker": marker,
+    "Circle": circle,
+    // "Polygon": polygon
+};
+
+var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);

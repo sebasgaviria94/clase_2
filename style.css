@@ -1,11 +1,7 @@
-p{
-    font-size: medium;
-    color: blue;
+h1{
+    color:violet;    
 }
 
-.titulo{  
-    font-size: 24px;
-    color: yellow;
-    background-color: red;
-
+#map { 
+    height: 95vh;
 }
